@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifetime Supply Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lifetime Supply Calculator</h1>
+        <form id="supplyForm">
+            <label for="age">Current Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="lifespan">Estimated Lifespan:</label>
+            <input type="number" id="lifespan" required>
+
+            <label for="supplyFrequency">Supply Frequency (per year):</label>
+            <input type="number" id="supplyFrequency" required>
+
+            <button type="button" onclick="calculateSupply()">Calculate</button>
+        </form>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        function calculateSupply() {
+            const age = document.getElementById('age').value;
+            const lifespan = document.getElementById('lifespan').value;
+            const supplyFrequency = document.getElementById('supplyFrequency').value;
+
+            // Calculate remaining years
+            const remainingYears = lifespan - age;
+
+            if (remainingYears <= 0) {
+                document.getElementById('result').innerHTML = "Please enter a valid lifespan greater than your current age.";
+                return;
+            }
+
+            // Calculate total supply
+            const totalSupply = remainingYears * supplyFrequency;
+
+            document.getElementById('result').innerHTML = `Your lifetime supply will be approximately ${totalSupply} units.`;
+        }
+    </script>
+</body>
+</html>
